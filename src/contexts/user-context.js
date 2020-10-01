@@ -13,6 +13,8 @@ function UserProvider({ children }) {
   const login = (email) => {
     const userDetails = authContext.updateUser(email, true);
     sessionStorage.setItem("userEmail", userDetails.email);
+
+    return userDetails.isLoggedIn;
   };
 
   const logout = (email) => {

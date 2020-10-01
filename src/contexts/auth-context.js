@@ -30,20 +30,16 @@ function AuthProvider({ children }) {
     const userIndex = users_data.findIndex((user) => user.email === email);
 
     users_data[userIndex].isLoggedIn = status;
-
-    // console.log(updated_user, email, status);
-
-    // if (userIndex >= 0) {
-    //   users_data.splice(userIndex, 1, updated_user);
-    // }
-    console.log(users_data);
     setUsers(users_data);
-    // return updated_user;
+    return users_data[userIndex];
   };
 
   const isUserLoggedIn = (email) => {
     const user = users.find((user) => user.email === email);
-    return user.isLoggedIn;
+    if (user) {
+      return user.isLoggedIn;
+    }
+    return false;
   };
   return (
     <AuthContext.Provider
